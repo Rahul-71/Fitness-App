@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { exerciseOptions, fetchData } from "../utils/fetchData";
 
 const SearchExercises = () => {
+  const [search, setSearch] = useState("");
+  const [exercises, setExercises] = useState([]);
+
+  const handleSearch = async () => {
+    if (search) {
+      const exerciseData = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises",
+        exerciseOptions
+      );
+
+      const searchedExercises = exerciseData.filter(
+        (exercise) =>
+          exercise.name.toLowerCase().includes(search) ||
+          exercise.bodyPart.toLowerCase().includes(search) ||
+          exercise.target.toLowerCase().includes(search) ||
+          exercise.equipment.toLowerCase().includes(search)
+      );
+
+      setSearch("");
+      setExercises(searchedExercises);
+    }
+  };
+
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography
@@ -18,10 +42,10 @@ const SearchExercises = () => {
       <Box>
         <TextField
           height="76px"
-          value=""
+          value={search}
           placeholder="Search Exercises"
           type="text"
-          onChange={(e) => {}}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
           sx={{
             backgroundColor: "#fff",
             borderRadius: "40px",
@@ -35,6 +59,7 @@ const SearchExercises = () => {
         />
         <Button
           className="search-btn"
+          onClick={handleSearch}
           sx={{
             bgcolor: "#ff2625",
             color: "#fff",
