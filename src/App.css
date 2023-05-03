@@ -13,7 +13,7 @@ body {
   width: 0px;
 }
 
-/* .right-arrow,
+.right-arrow,
 .left-arrow {
   cursor: pointer;
   background: transparent;
@@ -41,6 +41,7 @@ body {
   transform: scale(1.3, 1.3);
 }
 
+/* 
 .react-horizontal-scrolling-menu--wrapper {
   width: 100%;
   display: flex;
@@ -79,6 +80,7 @@ body {
 .exercise-card img {
   height: 326px;
 }
+*/
 
 .bodyPart-card {
   transform: scale(1, 1);
@@ -90,6 +92,7 @@ body {
   transform: scale(1.1, 1.1);
 }
 
+/*
 .search-btn:hover {
   color: #ff2625 !important;
   border: 1px solid #ff2625 !important;
