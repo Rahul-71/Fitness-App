@@ -1,4 +1,5 @@
-import { Link, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
+import { Link } from "react-router-dom";
 import Logo from "../assets/images/Logo.png";
 import React from "react";
 
@@ -40,6 +41,11 @@ const Navbar = () => {
         <a
           href="#exercises"
           style={{ textDecoration: "none", color: "#3A1212" }}
+          onClick={() => {
+            document
+              .getElementById("searchResult")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
         >
           Exercises
         </a>

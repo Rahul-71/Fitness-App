@@ -36,6 +36,11 @@ const HeroBanner = () => {
         color="error"
         href="#exercises"
         sx={{ padding: "10px" }}
+        onClick={() => {
+          document
+            .getElementById("searchResult")
+            .scrollIntoView({ behavior: "smooth" });
+        }}
       >
         Explore Exercises
       </Button>
