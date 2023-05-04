@@ -3,8 +3,8 @@ import React from "react";
 
 const exerciseVideos = ({ exerciseVideos, name }) => {
   if (!exerciseVideos.length) return "Loading...";
-  console.log("exerciseVideos");
-  console.log(exerciseVideos);
+  // console.log("exerciseVideos");
+  // console.log(exerciseVideos);
 
   return (
     <Box sx={{ marginTop: { lg: "200px", xs: "20px" } }} p="20px">
@@ -19,12 +19,13 @@ const exerciseVideos = ({ exerciseVideos, name }) => {
         alignItems="center"
         justifyContent="flex-start"
         flexWrap="wrap"
+        mb="50px"
         sx={{
           flexDirection: { lg: "row" },
-          gap: { lg: "110px", xs: "0px" },
+          gap: { lg: "20px 100px", xs: "80px 0px" },
         }}
       >
-        {exerciseVideos?.slice(0, 3).map((content, index) => (
+        {exerciseVideos?.slice(0, 6).map((content, index) => (
           <a
             key={index}
             href={`https://www.youtube.com/watch?v=${content.video.videoId}`}

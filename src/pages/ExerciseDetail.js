@@ -10,9 +10,15 @@ import { useParams } from "react-router-dom";
 const ExerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState({});
   const [exerciseVideos, setExerciseVideo] = useState([]);
+  const [targetMuscleExercise, setTargetMuscleExercise] = useState([]);
+  const [equipmentExercise, setEquipmentExercise] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
+    // document
+    //   .getElementById("searchResult")
+    //   ?.scrollIntoView({ behavior: "smooth" });
+
     const fetchExerciseData = async () => {
       const exerciseDbUrl = "https://exercisedb.p.rapidapi.com";
       const youtubeSearchUrl =
@@ -28,16 +34,22 @@ const ExerciseDetail = () => {
         `${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`,
         youtubeOptions
       );
-      console.log("fetched video data");
-      console.log(exerciseVideoData.contents);
       setExerciseVideo(exerciseVideoData.contents);
+
+      const targetMuscleExerciseData = await fetchData(
+        `${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`,
+        exerciseOptions
+      );
+      setTargetMuscleExercise(targetMuscleExerciseData);
+
+      const equipmentExerciseData = await fetchData(
+        `${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`,
+        exerciseOptions
+      );
+      setEquipmentExercise(equipmentExerciseData);
     };
 
     fetchExerciseData();
-
-    // return () => {
-    //   second
-    // }
   }, [id]);
 
   return (
@@ -47,7 +59,10 @@ const ExerciseDetail = () => {
         exerciseVideos={exerciseVideos}
         name={exerciseDetail.name}
       />
-      <SimilarExercises />
+      <SimilarExercises
+        targetMuscleExercise={targetMuscleExercise}
+        equipmentExercise={equipmentExercise}
+      />
     </Box>
   );
 };

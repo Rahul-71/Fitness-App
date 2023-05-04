@@ -15,7 +15,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
         exerciseOptions
       );
 
-      console.log(bodyPartsData);
+      // console.log(bodyPartsData);
 
       setBodyParts(["all", ...bodyPartsData]);
     };
@@ -97,6 +97,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
           data={bodyParts}
           bodyPart={bodyPart}
           setBodyPart={setBodyPart}
+          isBodyParts
         />
       </Box>
     </Stack>
