@@ -6,7 +6,7 @@ import TargetImage from "../assets/icons/target.png";
 import EquipmentImage from "../assets/icons/equipment.png";
 
 const Detail = ({ exerciseDetail }) => {
-  const { bodyPart, equipment, gifUrl, id, name, target } = exerciseDetail;
+  const { bodyPart, equipment, gifUrl, name, target } = exerciseDetail;
 
   const extraDetails = [
     {
